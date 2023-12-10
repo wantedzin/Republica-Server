@@ -50,86 +50,85 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-
 local function addSpellKeyword(spellKeyword, spellName, price, level)
-    keywordHandler:addSpellKeyword(spellKeyword, {
-        npcHandler = npcHandler,
-        spellName = spellName,
-        price = price,
-        level = level,
-        vocation = VOCATION.BASE_ID.PALADIN
-    })
+	keywordHandler:addSpellKeyword(spellKeyword, {
+		npcHandler = npcHandler,
+		spellName = spellName,
+		price = price,
+		level = level,
+		vocation = VOCATION.BASE_ID.PALADIN,
+	})
 end
 
--- Paladin's Spells Configurations 
+-- Paladin's Spells Configurations
 local spells = {
-    { "arrow call", "Arrow Call", 0, 1 },
-    { "cancel invisibility", "Cancel Invisibility", 1600, 26 },
-    { "conjure explosive arrow", "Conjure Explosive Arrow", 1000, 25 },
-    { "conjure arrow", "Conjure Arrow", 450, 13 },
-    { "cure curse", "Cure Curse", 6000, 80 },
-    { "cure poison", "Cure Poison", 150, 10 },
-    { "divine caldera", "Divine Caldera", 3000, 50 },
-    { "divine dazzle", "Divine Dazzle", 250000, 250 },
-    { "divine healing", "Divine Healing", 3000, 35 },
-    { "divine missile", "Divine Missile", 1800, 40 },
-    { "enchant spear", "Enchant Spear", 2000, 45 },
-    { "strong ethereal spear", "Strong Ethereal Spear", 10000, 90 },
-    { "ethereal spear", "Ethereal Spear", 1100, 23 },
-    { "find fiend", "Find Fiend", 1000, 25 },
-    { "find person", "Find Person", 80, 8 },
-    { "great light", "Great Light", 500, 13 },
-    { "haste", "Haste", 600, 14 },
-    { "holy flash", "Holy Flash", 7500, 70 },
-    { "intense healing", "Intense Healing", 350, 20 },
-    { "intense recovery", "Intense Recovery", 10000, 100 },
-    { "levitate", "Levitate", 500, 12 },
-    { "light healing", "Light Healing", 0, 8 },
-    { "light", "Light", 0, 8 },
-    { "magic rope", "Magic Rope", 200, 9 },
-    { "protect party", "Protect Party", 4000, 32 },
-    { "recovery", "Recovery", 4000, 50 },
-    { "salvation", "Salvation", 8000, 60 },
-    { "sharpshooter", "Sharpshooter", 8000, 60 },
-    { "summon paladin familiar", "Summon Paladin Familiar", 50000, 200 },
-    { "swift foot", "Swift Foot", 6000, 55 },
-    { "destroy field rune", "Destroy Field Rune", 700, 17 },
-    { "disintegrate rune", "Disintegrate Rune", 900, 21 },
-    { "holy missile rune", "Holy Missile Rune", 1600, 27 },
+	{ "arrow call", "Arrow Call", 0, 1 },
+	{ "cancel invisibility", "Cancel Invisibility", 1600, 26 },
+	{ "conjure explosive arrow", "Conjure Explosive Arrow", 1000, 25 },
+	{ "conjure arrow", "Conjure Arrow", 450, 13 },
+	{ "cure curse", "Cure Curse", 6000, 80 },
+	{ "cure poison", "Cure Poison", 150, 10 },
+	{ "divine caldera", "Divine Caldera", 3000, 50 },
+	{ "divine dazzle", "Divine Dazzle", 250000, 250 },
+	{ "divine healing", "Divine Healing", 3000, 35 },
+	{ "divine missile", "Divine Missile", 1800, 40 },
+	{ "enchant spear", "Enchant Spear", 2000, 45 },
+	{ "strong ethereal spear", "Strong Ethereal Spear", 10000, 90 },
+	{ "ethereal spear", "Ethereal Spear", 1100, 23 },
+	{ "find fiend", "Find Fiend", 1000, 25 },
+	{ "find person", "Find Person", 80, 8 },
+	{ "great light", "Great Light", 500, 13 },
+	{ "haste", "Haste", 600, 14 },
+	{ "holy flash", "Holy Flash", 7500, 70 },
+	{ "intense healing", "Intense Healing", 350, 20 },
+	{ "intense recovery", "Intense Recovery", 10000, 100 },
+	{ "levitate", "Levitate", 500, 12 },
+	{ "light healing", "Light Healing", 0, 8 },
+	{ "light", "Light", 0, 8 },
+	{ "magic rope", "Magic Rope", 200, 9 },
+	{ "protect party", "Protect Party", 4000, 32 },
+	{ "recovery", "Recovery", 4000, 50 },
+	{ "salvation", "Salvation", 8000, 60 },
+	{ "sharpshooter", "Sharpshooter", 8000, 60 },
+	{ "summon paladin familiar", "Summon Paladin Familiar", 50000, 200 },
+	{ "swift foot", "Swift Foot", 6000, 55 },
+	{ "destroy field rune", "Destroy Field Rune", 700, 17 },
+	{ "disintegrate rune", "Disintegrate Rune", 900, 21 },
+	{ "holy missile rune", "Holy Missile Rune", 1600, 27 },
 }
 
 for _, spellInfo in ipairs(spells) do
-    addSpellKeyword({ spellInfo[1] }, spellInfo[2], spellInfo[3], spellInfo[4])
+	addSpellKeyword({ spellInfo[1] }, spellInfo[2], spellInfo[3], spellInfo[4])
 end
 
 -- Paladin's Spells List
 keywordHandler:addKeyword({ "attack" }, StdModule.say, {
-    npcHandler = npcHandler,
-    text = "In this category I have '{Divine Caldera}', '{Divine Missile}', '{Ethereal Spear}', '{Holy Flash}', and '{Strong Ethereal Spear}'.",
+	npcHandler = npcHandler,
+	text = "In this category I have '{Divine Caldera}', '{Divine Missile}', '{Ethereal Spear}', '{Holy Flash}', and '{Strong Ethereal Spear}'.",
 })
 keywordHandler:addKeyword({ "healing" }, StdModule.say, {
-    npcHandler = npcHandler,
-    text = "In this category I have '{Cure Curse}', '{Cure Poison}', '{Divine Healing}', '{Intense Healing}', '{Intense Recovery}', '{Light Healing}', '{Recovery}', and '{Salvation}'.",
+	npcHandler = npcHandler,
+	text = "In this category I have '{Cure Curse}', '{Cure Poison}', '{Divine Healing}', '{Intense Healing}', '{Intense Recovery}', '{Light Healing}', '{Recovery}', and '{Salvation}'.",
 })
 keywordHandler:addKeyword({ "support" }, StdModule.say, {
-    npcHandler = npcHandler,
-    text = "In this category I have '{Cancel Invisibility}', {Divine Dazzle}, '{Find Fiend}', '{Find Person}', '{Great Light}', '{Haste}', {Levitate}, '{Light}', '{Magic Rope}', '{Sharpshooter}', and '{Swift Foot}'.",
+	npcHandler = npcHandler,
+	text = "In this category I have '{Cancel Invisibility}', {Divine Dazzle}, '{Find Fiend}', '{Find Person}', '{Great Light}', '{Haste}', {Levitate}, '{Light}', '{Magic Rope}', '{Sharpshooter}', and '{Swift Foot}'.",
 })
 keywordHandler:addKeyword({ "conjure" }, StdModule.say, {
-    npcHandler = npcHandler,
-    text = "In this category I have {Arrow Call} ,'{Conjure Arrow}', '{Conjure Explosive Arrow}', and '{Enchant Spear}'.",
+	npcHandler = npcHandler,
+	text = "In this category I have {Arrow Call} ,'{Conjure Arrow}', '{Conjure Explosive Arrow}', and '{Enchant Spear}'.",
 })
 keywordHandler:addKeyword({ "summon" }, StdModule.say, {
-    npcHandler = npcHandler,
-    text = "In this category I have '{Summon Paladin Familiar}'.",
+	npcHandler = npcHandler,
+	text = "In this category I have '{Summon Paladin Familiar}'.",
 })
 keywordHandler:addKeyword({ "runes" }, StdModule.say, {
-    npcHandler = npcHandler,
-    text = "In this category I have '{Destroy Field Rune}', '{Disintegrate Rune}', and '{Holy Missile Rune}'.",
+	npcHandler = npcHandler,
+	text = "In this category I have '{Destroy Field Rune}', '{Disintegrate Rune}', and '{Holy Missile Rune}'.",
 })
 keywordHandler:addKeyword({ "party" }, StdModule.say, {
-    npcHandler = npcHandler,
-    text = "In this category I have '{Protect Party}'.",
+	npcHandler = npcHandler,
+	text = "In this category I have '{Protect Party}'.",
 })
 keywordHandler:addKeyword({ "spells" }, StdModule.say, {
 	npcHandler = npcHandler,
